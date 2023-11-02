@@ -64,10 +64,38 @@ done &
 done; done
 
 
+## Noisy annotations, only 10% annotated without and with imputation
+for NOISE in '0.0' '0.1' '0.3' '0.4' '0.5' '0.6' '0.7' '0.8' '0.9' '1.0'; do
+python runs-4-annotEvalMissing.py --flip_num=0 --flip_seed=0 --annot_ratio='0.1' --annot_noise=$NOISE &> /dev/null;
+python runs-4-annotEvalMissingImpute.py --flip_num=0 --flip_seed=0 --annot_ratio='0.1' --annot_noise=$NOISE &> /dev/null;
+done &
+
+for FLIP_NUM in 25 50 100 200 300 400; do for SEED in 0 42 123 424242 10000; do
+for NOISE in '0.0' '0.1' '0.3' '0.4' '0.5' '0.6' '0.7' '0.8' '0.9' '1.0'; do
+python runs-4-annotEvalMissing.py --flip_num=$FLIP_NUM --flip_seed=$SEED --annot_ratio='0.1' --annot_noise=$NOISE &> /dev/null;
+python runs-4-annotEvalMissingImpute.py --flip_num=$FLIP_NUM --flip_seed=$SEED --annot_ratio='0.1' --annot_noise=$NOISE &> /dev/null;
+done &
+done; done
+
 
 ##########
 
 ## Missing annotations without and with imputation
+## with Noise (annot_noise=0.2)
+for RATIO in '0.0' '0.1' '0.2' '0.3' '0.4' '0.5' '0.6' '0.7' '0.8' '0.9' '1.0'; do
+python runs-4-annotEvalMissing.py --flip_num=0 --flip_seed=0 --annot_ratio=$RATIO &> /dev/null;
+python runs-4-annotEvalMissingImpute.py --flip_num=0 --flip_seed=0 --annot_ratio=$RATIO &> /dev/null;
+done &
+
+for FLIP_NUM in 25 50 100 200 300 400; do for SEED in 0 42 123 424242 10000; do
+for RATIO in '0.0' '0.1' '0.2' '0.3' '0.4' '0.5' '0.6' '0.7' '0.8' '0.9' '1.0'; do
+python runs-4-annotEvalMissing.py --flip_num=$FLIP_NUM --flip_seed=$SEED --annot_ratio=$RATIO &> /dev/null;
+python runs-4-annotEvalMissingImpute.py --flip_num=$FLIP_NUM --flip_seed=$SEED --annot_ratio=$RATIO &> /dev/null;
+done &
+done; done
+
+## Missing annotations without and with imputation, with noise std=1.0
+## with Noise (annot_noise=1.0)
 for RATIO in '0.0' '0.1' '0.2' '0.3' '0.4' '0.5' '0.6' '0.7' '0.8' '0.9' '1.0'; do
 python runs-4-annotEvalMissing.py --flip_num=0 --flip_seed=0 --annot_ratio=$RATIO &> /dev/null;
 python runs-4-annotEvalMissingImpute.py --flip_num=0 --flip_seed=0 --annot_ratio=$RATIO &> /dev/null;
@@ -81,7 +109,6 @@ done &
 done; done
 
 
-
 ##########
 
 ## Annot π_b converted approx MDP
@@ -92,22 +119,3 @@ for SEED in 0 42 123 424242 10000; do
 python runs-5-annotBehConvertedAM.py --flip_num=$FLIP_NUM --flip_seed=$SEED &> /dev/null
 done &
 done
-
-
-
-
-
-##########
-
-## Noisy annotations, only 10% annotated without and with imputation
-for NOISE in '0.0' '0.1' '0.3' '0.4' '0.5' '0.6' '0.7' '0.8' '0.9' '1.0'; do
-python runs-4-annotEvalMissing.py --flip_num=0 --flip_seed=0 --annot_ratio='0.1' --annot_noise=$NOISE &> /dev/null;
-python runs-4-annotEvalMissingImpute.py --flip_num=0 --flip_seed=0 --annot_ratio='0.1' --annot_noise=$NOISE &> /dev/null;
-done &
-
-for FLIP_NUM in 25 50 100 200 300 400; do for SEED in 0 42 123 424242 10000; do
-for NOISE in '0.0' '0.1' '0.3' '0.4' '0.5' '0.6' '0.7' '0.8' '0.9' '1.0'; do
-python runs-4-annotEvalMissing.py --flip_num=$FLIP_NUM --flip_seed=$SEED --annot_ratio='0.1' --annot_noise=$NOISE &> /dev/null;
-python runs-4-annotEvalMissingImpute.py --flip_num=$FLIP_NUM --flip_seed=$SEED --annot_ratio='0.1' --annot_noise=$NOISE &> /dev/null;
-done &
-done; done

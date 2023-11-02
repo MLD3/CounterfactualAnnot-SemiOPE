@@ -32,10 +32,10 @@ If you use this code in your research, please cite the following publication:
     - `0-prepopulate_annotations.ipynb` preprocesses the data so that all counterfactual annotations are pre-populated. This step is run only once (instead of repeated for each experiment) as it takes a long time. The annotations are later replaced with different values or removed depending on the experiment. The output is saved to `results/vaso_eps_0_1-annotOpt_df_seed2_aug_step.pkl`.
     - Use `commands.sh` to run the experiments.
     - Run the following notebooks to generate tables and figures used in the paper:
-        - `results.ipynb`: Table 2, Appx E Table 5 top, Appx E Fig 9
+        - `results.ipynb`: Table 2, Appx E Table 5 top
         - `results-OIS-WIS.ipynb`: Appx E Table 5 bottom
-        - `plots-analyses.ipynb`: Fig 5 left, Appx E Fig 10
-        - `plots-noisy[-v2].ipynb`: Fig 5 center, Appx E Fig 11 left&center
-        - `plots-missing.ipynb`: Fig 5 right, Appx E Fig 11 right
-        - `plots--legend.ipynb`: figure legend used in Fig 5 and Fig 11
+        - `plots-analyses.ipynb`: Fig 5 left, Appx E Fig 9, Appx E Fig 10
+        - `plots-noisy[-v2].ipynb`: Fig 5 center, Appx E Fig 11
+        - `plots-missing-[v2].ipynb`: Fig 5 right, Appx E Fig 12
+        - `plots--legend.ipynb`: figure legend used in Fig 5, Fig 11, and Fig 12
     - `fig/` contains the main figures used in the paper.
